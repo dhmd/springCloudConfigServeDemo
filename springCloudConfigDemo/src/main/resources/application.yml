@@ -1,0 +1,26 @@
+server:
+  port: 6002
+spring:
+  application:
+    name: springbootConfig
+  profiles:
+    active: dev
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/dhmdhm/springcloudDemo.git
+          #username: dhmdhm
+          #password: dhm612612
+          #skip-ssl-validation: true
+          default-label: main
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:5000/eureka/
+  instance:
+    preferIpAddress: true
+    instance-id: ${spring.cloud.client.ipAddress}:${server.port}
+    lease-expiration-duration-in-seconds: 30
+    lease-renewal-interval-in-seconds: 30
